@@ -101,7 +101,12 @@ spec:
           value: "1"
         {{- end }}
         resources:
-          {{- toYaml .Values.checkoutService.resources | nindent 10 }}
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
 ---
 apiVersion: v1
 kind: Service

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM node:20.0.0-alpine@sha256:2ffec31a58e85fbcd575c544a3584f6f4d128779e6b856153a04366b8dd01bb0 as base
+FROM node:19.7.0-alpine@sha256:51dd437f31812df71108b81385e2945071ec813d5815fa3403855669c8f3432b as base
 
 FROM base as builder
 
@@ -44,6 +44,6 @@ ENTRYPOINT [ "node", "index.js" ]
 FROM without-grpc-health-probe-bin
 
 # renovate: datasource=github-releases depName=grpc-ecosystem/grpc-health-probe
-ENV GRPC_HEALTH_PROBE_VERSION=v0.4.18
+ENV GRPC_HEALTH_PROBE_VERSION=v0.4.14
 RUN wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
     chmod +x /bin/grpc_health_probe

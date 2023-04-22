@@ -62,7 +62,12 @@ spec:
         - name: PORT
           value: "9555"
         resources:
-          {{- toYaml .Values.adService.resources | nindent 10 }}
+          requests:
+            cpu: 200m
+            memory: 180Mi
+          limits:
+            cpu: 300m
+            memory: 300Mi
         readinessProbe:
           initialDelaySeconds: 20
           periodSeconds: 15

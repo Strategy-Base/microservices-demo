@@ -94,7 +94,12 @@ spec:
           value: "1"
         {{- end }}
         resources:
-          {{- toYaml .Values.recommendationService.resources | nindent 10 }}
+          requests:
+            cpu: 100m
+            memory: 220Mi
+          limits:
+            cpu: 200m
+            memory: 450Mi
 ---
 apiVersion: v1
 kind: Service
